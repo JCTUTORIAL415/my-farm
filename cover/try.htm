@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>聯絡我們</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;500;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="try.css">
+        <link rel="stylesheet" href="contact_us/container.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <div class="header">   
+            <button value="HOME" onclick="go_to_page(this.value)">首頁</button>
+            <hr>
+            <button value="MY-FARM" onclick="go_to_page(this.value)" >我的田地狀況</button>
+            <hr>
+            <button value="WEATHER" onclick="go_to_page(this.value)">今日氣候狀況</button>
+            <hr>
+            <button value="MARKET-PRICE" onclick="go_to_page(this.value)">當前市場價格</button>
+            <hr>
+            <button value="ABOUT-US" onclick="go_to_page(this.value)">關於我們</button>
+        </div>
+        <img src="contact_us/contact us_gaiyas.png" class="gaiyas">
+        <div class="logo_img">
+            <a href="https://www.instagram.com/gaiyas_farm.tw/">
+                <img src="contact_us/ig_img.png" class="ig" >
+            </a>
+            <a href="https://www.facebook.com/injureshark.2021/?locale=zh_TW">
+                <img src="contact_us/fb_img.png" class="fb">
+            </a>
+            <img src="contact_us/line_img.png" class="line">
+        </div>
+        <div class="container">
+            <h2>Contact Us(聯絡我們的信箱)</h2>
+            <form action="/contact" method="post">
+                <label for="name">Name(名字):</label>
+                <input type="text" id="name" name="name" required>
+        
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required>
+        
+                <label for="message">Message(遇到問題):</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+        
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+        <script>
+            $(document).ready(function() {
+                $("form").submit(function(event) {
+                    event.preventDefault(); // 阻止表單的預設提交行為
+    
+                    // 獲取表單數據
+                    var formData = $(this).serialize();
+    
+                    // 發送 AJAX 請求到後端 Flask 程序
+                    $.ajax({
+                        url: "/send_email", // Flask 路由
+                        type: "POST",
+                        data: formData,
+                        success: function(response) {
+                            // 在成功接收後端回應時的處理
+                            alert(response.message);
+                            $("#contact-form")[0].reset(); // 清空表單
+                        },
+                        error: function(xhr, status, error) {
+                            // 在與後端通信失敗時的處理
+                            alert("郵件發送失敗：" + error);
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+    <script>
+       function go_to_page(selectedValue) {
+        // 獲取選擇框的值
+        
+        // 基於選擇的值導航到相應的頁面
+        if (selectedValue === "MY-FARM") {
+            window.open("../My_farm/my-farm.htm", "_blank");
+        }
+        else if  (selectedValue === "WEATHER") {
+            window.open("../weather.htm", "_blank");
+        }
+        else if  (selectedValue === "MARKET-PRICE") {
+            window.open("../price.htm", "_blank");
+        }
+        else if   (selectedValue === "ABOUT-US") {
+            window.open("../about_us/about_us.htm", "_blank");
+        }
+        else  {
+            window.open("../GAIYAS_WEB_COVER.htm", "_blank");
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault(); // 阻止表單的預設提交行為
+
+            // 在此處添加 JavaScript 代碼來發送郵件
+
+            // 彈出警示
+            alert("郵件已成功發送！");
+
+            // 可以選擇清空表單或者進行其他操作
+            this.reset(); // 清空表單
+        });
+    });
+    </script>
+</html>
+

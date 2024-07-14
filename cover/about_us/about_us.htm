@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;500;900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <link  rel="stylesheet" href="about_us.css">
+    <title>關於我們</title>
+</head>
+<body>
+    <div class="header">
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav class="nav-links">
+            <button value="HOME" onclick="go_to_page(this.value)">首頁</button>
+            <button value="MY-FARM" onclick="go_to_page(this.value)">我的田地狀況</button>
+            <button value="WEATHER" onclick="go_to_page(this.value)">今日氣候狀況</button>
+            <button value="MARKET-PRICE" onclick="go_to_page(this.value)">當前市場價格</button>
+            <button value="ABOUT-US" onclick="go_to_page(this.value)">聯絡我們</button>
+        </nav>
+    </div>
+    <div class="about_us">
+        <img  src="cover_img.png" class="img">
+        <div class="introduce">
+            <h1>關於我們</h1>
+            <div class="content">
+                <p class="remind">＊請向下滑動＊</p>
+                
+                <p>蓋亞是古希臘中的大地之母</p>
+                <p>也正是我們的精神標誌</p>
+                <p>我們察覺到孕育我們長大的農村正在面臨著多項問題</p>
+                <p>勞動力流失的根本是沒有年輕一輩的人們加入</p>
+                <p>微薄的利潤及極端的氣候倒置人們不想加入該產業</p>
+                <p>我們始終相信一級產業是一個有前景的產業</p>
+                <p>我們所期盼的不只是藉由科技減少人工</p>
+                <p>而是建立一個完善的體制、好的環境</p>
+                <p>那更多的人踏入該領域</p>
+                <p>不管是年輕一輩還是已經在產業的前輩們</p>
+                <p>我們相當期盼大家的加入！</p>
+                <p>透過大家的努力建造起一個安全，無慮的農業王國</p>
+                <p>我們的角色就像是蓋亞一樣，為這片土地盡一份微薄的力。</p>
+            </div>    
+        </div>
+    </div>
+    <script>
+        function go_to_page(selectedValue) {
+            // 獲取選擇框的值
+            // 基於選擇的值導航到相應的頁面
+            if (selectedValue === "MY-FARM") {
+                window.open("../My_farm/my-farm.htm", "_blank")
+            }
+            else if  (selectedValue === "WEATHER") {
+                window.open("../weather.htm", "_blank");
+            }
+            else if  (selectedValue === "MARKET-PRICE") {
+                window.open("../price.htm", "_blank");
+            }
+            else if   (selectedValue === "HOME") {
+                window.open("../GAIYAS_WEB_COVER.htm", "_blank");
+            }
+            else  {
+                window.open("../contact_us/contact_us.htm", "_blank");
+            }
+        } var navLinks = document.querySelector('.nav-links');
+    if (navLinks.classList.contains('nav-active')) {
+        toggleMenu();
+    }
+
+
+window.addEventListener('resize', function() {
+    // 檢查窗口尺寸是否大於 768px
+    if (window.innerWidth > 768) {
+        // 獲取導航鏈接元素
+        var navLinks = document.querySelector('.nav-links');
+        // 如果導航鏈接元素的類中包含 'nav-active'，則將其移除
+        if (navLinks.classList.contains('nav-active')) {
+            toggleMenu();
+        }
+    }
+});
+
+
+        function toggleMenu() {
+            var navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('nav-active');
+        }
+    </script>
+</body>
+</html>
+

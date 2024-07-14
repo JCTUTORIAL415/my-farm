@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>聯絡我們</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;500;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="contact_us.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav class="nav-links">
+            <button value="HOME" onclick="go_to_page(this.value)">首頁</button>
+            <button value="MY-FARM" onclick="go_to_page(this.value)">我的田地狀況</button>
+            <button value="WEATHER" onclick="go_to_page(this.value)">今日氣候狀況</button>
+            <button value="MARKET-PRICE" onclick="go_to_page(this.value)">當前市場價格</button>
+            <button value="ABOUT-US" onclick="go_to_page(this.value)">關於我們</button>
+        </nav>
+    </div>
+    <div class="contact_us">
+        <div class="img">
+            <img src="contact us_gaiyas.png" class="gaiyas">
+        </div>
+        <div class="logo_img">
+            <a href="https://www.instagram.com/gaiyas_farm.tw/">
+                <img src="ig_img.png" class="ig">
+            </a>
+            <a href="https://www.facebook.com/injureshark.2021/?locale=zh_TW">
+                <img src="fb_img.png" class="fb">
+            </a>
+            <img src="line_img.png" class="line">
+        </div>
+        <div class="container">
+            <h2>Contact Us(聯絡我們的信箱)</h2>
+            <form id="contact-form" action="/contact" method="post">
+                <label for="name">Name(名字):</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message(遇到問題):</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+    <script>
+        function go_to_page(selectedValue) {
+            // 獲取選擇框的值
+            // 基於選擇的值導航到相應的頁面
+            if (selectedValue === "MY-FARM") {
+                window.open("../My_farm/my-farm.htm", "_blank")
+            }
+            else if  (selectedValue === "WEATHER") {
+                window.open("../weather.htm", "_blank");
+            }
+            else if  (selectedValue === "MARKET-PRICE") {
+                window.open("../price.htm", "_blank");
+            }
+            else if   (selectedValue === "HOME") {
+                window.open("../GAIYAS_WEB_COVER.htm", "_blank");
+            }
+            else  {
+                window.open("../about_us/about_us.htm", "_blank");
+            }
+        } var navLinks = document.querySelector('.nav-links');
+    if (navLinks.classList.contains('nav-active')) {
+        toggleMenu();
+    }
+
+
+window.addEventListener('resize', function() {
+    // 檢查窗口尺寸是否大於 768px
+    if (window.innerWidth > 768) {
+        // 獲取導航鏈接元素
+        var navLinks = document.querySelector('.nav-links');
+        // 如果導航鏈接元素的類中包含 'nav-active'，則將其移除
+        if (navLinks.classList.contains('nav-active')) {
+            toggleMenu();
+        }
+    }
+});
+
+
+        function toggleMenu() {
+            var navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('nav-active');
+        }
+
+    </script>
+</body>
+</html>
+

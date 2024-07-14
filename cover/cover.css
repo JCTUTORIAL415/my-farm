@@ -1,0 +1,99 @@
+body {
+    background-image: url('cover.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* 確保背景圖片固定 */
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.selection {
+    width: 80%;
+    height: 80px;
+    position: relative;
+    margin: 0 auto; /* 將 .selection div 水平置中 */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 等效於 1fr 1fr 1fr 1fr 1fr */
+    text-align: center;
+    align-items: center; /* 垂直居中 */
+    justify-items: center; /* 水平居中 */
+    backdrop-filter: blur(30px);
+    box-shadow: 0px 0px 30px rgba(227, 228, 237, 0.37);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    margin-top: 310px;
+    border-radius:10px ;
+   
+}
+
+h1.title {
+    font-style: normal;
+    font-size: 80px;
+    color: antiquewhite;
+    text-align: center;
+    margin-top: 200px;
+    font-weight: bolder;
+    font-family: 'Noto Serif TC', serif;
+}
+
+.option {
+    font: normal 400 25px 'Noto Serif TC', serif;
+    color: aliceblue;
+    text-decoration: none; /* 移除超連結下劃線 */
+    width: 100%;
+    height: 100%;
+}
+
+a.option-link {
+    text-decoration: none; /* 移除超連結下劃線 */
+}
+
+.content {
+    width: 100%;
+    height: 80px;
+    font: normal bolder 80px 'Noto Serif TC', serif;
+    color: aliceblue;
+    text-align: center;
+    margin-top: 200px;
+}
+
+.option-link:hover {
+    background-color: rgb(114, 113, 112);
+}
+
+/* 手機顯示的樣式 */
+@media (max-width: 700px) {
+ 
+
+
+    h1.title {
+        font-size: 30px;
+        margin-top: 90px;
+    }
+
+    .content {
+        font-size: 40px;
+        margin: 20px auto;
+        text-align: center;
+        visibility: hidden
+        
+    }
+
+    .selection {
+        grid-template-columns: 1fr; /* 將選項變成單列 */
+        height: auto; /* 自適應高度 */
+        margin-top: 200px;
+    }
+
+    .option {
+        font-size: 20px;
+        padding: 10px 0;
+        height: auto;
+    }
+}
+
+
+
+  
+
+

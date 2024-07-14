@@ -1,0 +1,206 @@
+* {
+    font-family: 'Noto Serif TC', serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: linear-gradient(to bottom, #e0f7fa, transparent); /* 柔和的藍色背景漸變 */
+    margin: 0;
+    overflow-y: auto;
+    padding-top: 70px; /* Ensure content doesn't overlap with fixed header */
+}
+
+.header {
+    background-color: #1a472a; /* 深綠色 */
+    z-index: 1;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header .menu-toggle {
+    display: none;
+    font-size: 30px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.header .nav-links {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+}
+
+.header .nav-links button {
+    cursor: pointer;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: white;
+    background-color: #4CAF50; /* 綠色 */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+
+.header .nav-links button:hover {
+    background-color: #388e3c; /* 深綠色 */
+}
+
+.nav-active {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #1a472a;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.contact_us {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.gaiyas {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 20px;
+    filter: drop-shadow(1px 1px 20px green);
+    border-radius: 10px;
+}
+
+.logo_img {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; /* 垂直居中对齐图像 */
+    margin-bottom: 20px;
+}
+
+.logo_img img {
+    height: 80px; /* 统一图像高度 */
+    margin: 0 10px;
+    transition: filter 0.3s;
+}
+
+.logo_img img.ig {
+    height: 60px; /* 缩小 Instagram 图片 */
+}
+
+.logo_img img.fb {
+    height: 60px;
+    border-radius: 10px;
+}
+
+.logo_img img:hover {
+    filter: brightness(1.2);
+}
+
+.logo_img img.line {
+    height: 75px; /* 调整 Line 图片高度 */
+    margin: 0 10px; /* 设置 Line 图片外边距 */
+    border-radius: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.container form label {
+    margin: 10px 0 5px;
+}
+
+.container form input, .container form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #96d38c;
+    border-radius: 5px;
+}
+
+.container form input[type="submit"] {
+    background-color: #96D38c;
+    color: white;
+    cursor: pointer;
+    border: none;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.container form input[type="submit"]:hover {
+    background-color: #7abf64;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+
+    .header .menu-toggle {
+        display: block;
+    }
+
+    .header .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .nav-active {
+        display: flex;
+    }
+
+    .header .nav-links button {
+        width: 100%;
+        text-align: left;
+        margin: 5px 0;
+    }
+
+    .logo_img {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo_img img {
+        margin: 5px 0;
+    }
+
+}

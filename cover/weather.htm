@@ -1,0 +1,100 @@
+<DOCKTYPE! html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>目前氣候</title>
+        <link rel="stylesheet" href="weather.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;500;900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="header">
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <nav class="nav-links">
+                <button value="HOME" onclick="go_to_page(this.value)">首頁</button>
+                <button value="MY-FARM" onclick="go_to_page(this.value)">我的田地狀況</button>
+                <button value="ABOUT-US" onclick="go_to_page(this.value)">關於我們</button>
+                <button value="MARKET-PRICE" onclick="go_to_page(this.value)">當前市場價格</button>
+                <button value="CONTACT-US" onclick="go_to_page(this.value)">聯絡我們</button>
+            </nav>
+        </div>
+        <div class="location_select">
+           <p class="question">請選擇您所在的縣市</p>
+           <div class="selection">
+            <!-- <form action=""> -->
+                <select name="task" id="task">
+                    <option value="基隆市">基隆市</option>
+                    <option value="新北市">新北市</option>
+                    <option value="臺北市">臺北市</option>
+                    <option value="桃園市">桃園市</option>
+                    <option value="新竹縣">新竹縣</option>
+                    <option value="新竹市">新竹市</option>
+                    <option value="苗栗縣">苗栗縣</option>
+                    <option value="臺中市">臺中市</option>
+                    <option value="彰化縣">彰化縣</option>
+                    <option value="南投縣">南投縣</option>
+                    <option value="雲林縣">雲林縣</option>
+                    <option value="嘉義縣">嘉義縣</option>
+                    <option value="嘉義市">嘉義市</option>
+                    <option value="臺南市">臺南市</option>
+                    <option value="高雄市">高雄市</option>
+                    <option value="屏東縣">屏東縣</option>
+                    <option value="臺東縣">臺東縣</option>
+                    <option value="花蓮縣">花蓮縣</option>
+                    <option value="宜蘭縣">宜蘭縣</option>
+                    <option value="澎湖縣">澎湖縣</option>
+                    <option value="金門縣">金門縣</option>
+                    <option value="連江縣">連江縣</option>
+                </select>
+                <button type="button" onclick="submitaaa()">確認</button>
+            <!-- </form> -->
+        </div>
+        </div>
+
+  <div class="show" id="show"></div>
+
+  <script>
+  function toggleMenu() {
+    var navLinks = document.querySelector('.nav-links');
+    navLinks.classList.toggle('nav-active');
+}
+
+function go_to_page(selectedValue) {
+    // 獲取選擇框的值
+    // 基於選擇的值導航到相應的頁面
+    if (selectedValue === "MY-FARM") {
+        window.open("My_farm/my-farm.htm", "_blank")
+    } else if (selectedValue === "ABOUT-US") {
+        window.open("about_us/about_us.htm", "_blank");
+    } else if (selectedValue === "MARKET-PRICE") {
+        window.open("price.htm", "_blank");
+    } else if (selectedValue === "HOME") {
+        window.open("GAIYAS_WEB_COVER.htm", "_blank");
+    } else {
+        window.open("contact_us/contact_us.htm", "_blank");
+    }
+
+    // 檢查選單是否打開，如果是，則關閉選單
+    var navLinks = document.querySelector('.nav-links');
+    if (navLinks.classList.contains('nav-active')) {
+        toggleMenu();
+    }
+}
+
+window.addEventListener('resize', function() {
+    // 檢查窗口尺寸是否大於 768px
+    if (window.innerWidth > 768) {
+        // 獲取導航鏈接元素
+        var navLinks = document.querySelector('.nav-links');
+        // 如果導航鏈接元素的類中包含 'nav-active'，則將其移除
+        if (navLinks.classList.contains('nav-active')) {
+            toggleMenu();
+        }
+    }
+});
+
+  </script>
+  <script src="index.js"></script>
+    </body>
+</html>

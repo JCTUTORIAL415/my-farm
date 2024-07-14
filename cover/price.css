@@ -1,0 +1,229 @@
+
+
+* {
+     
+        font-family: 'Noto Serif TC', serif;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    
+}
+body {
+    background:  #e0f7fa; /* 柔和的藍色背景漸變 */
+    margin: 0;
+    overflow-y: auto;
+    padding-top: 70px; /* Ensure content doesn't overlap with fixed header */
+}
+
+.header {
+    background-color: #1a472a; /* 深綠色 */
+    z-index: 1;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.header .menu-toggle {
+    display: none;
+    font-size: 30px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+.header .nav-links {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+}
+.header .nav-links button {
+    cursor: pointer;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: white;
+    background-color: #4CAF50; /* 綠色 */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+.header .nav-links button:hover {
+    background-color: #388e3c; /* 深綠色 */
+}
+.nav-active {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #1a472a;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+hr {
+    width: 1px;
+    color: black;
+    background-color: black;
+    height: 60px;
+    border-radius: -40px;
+}
+
+
+
+.location_select {
+    width: 100%;
+    height: 200px;
+    position: relative;
+    top: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 30px;
+}
+
+.location_select p {
+    font-size: 35px;
+    font-weight: 500;
+    margin-right: 20px;
+}
+
+.selection {
+    display: flex;
+    width: 400px;
+    left: -200px;
+}
+
+.selection button {
+    margin-left: 10px;
+    font-size: 15px;
+    border-radius: 30px;
+    border: none;
+    background-color: beige;
+    position: relative;
+    top: 3px;
+    width: 60px;
+    cursor: pointer;
+    height: 40px;
+}
+
+.selection select {
+    width: 250px;
+    height: 40px;
+    font-size: 20px;
+    position: relative;
+    top: 3px;
+}
+
+.selection button:hover {
+    background-color: #8b8b8b;
+}
+
+.location {
+    /* top: 750px;
+    right: 750px; */
+    font-size: 20px;
+    padding: 10px;
+}
+
+.location span {
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.location span.high {
+    color: red;
+    font-weight: bold;
+}
+
+.location span.medium {
+    color: #ffa500;
+    font-weight: bold;
+}
+
+.location span.low {
+    color: green;
+    font-weight: bold;
+}
+
+.location span.comparison {
+    color: #333;
+    font-style: italic;
+}
+
+#cropData{
+	margin-top: 50px;
+}
+
+.location {
+	margin-bottom: 30px;
+	padding: 10px;
+	border-radius: 8px;
+	border: 1px solid #ccc;
+	background-color: #f9f9f9;
+	width: 80%;
+	display: grid;
+	margin: 20px auto;
+	grid-column: 1fr 1fr 1fr 1fr;
+}
+.crown{
+    width: 45px;
+    height:45px;
+    position: relative;
+    top: 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+
+    .header .menu-toggle {
+        display: block;
+    }
+
+    .header .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .nav-active {
+        display: flex;
+    }
+
+    .header .nav-links button {
+        width: 100%;
+        text-align: left;
+        margin: 5px 0;
+    }
+
+    .logo_img {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo_img img {
+        margin: 5px 0;
+    }
+    .location_select{
+		display: initial;
+	}
+
+	#cropData{
+		margin-top: 150px;
+	}
+}

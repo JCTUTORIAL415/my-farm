@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <title>蓋亞自動化農業</title>
+    <link rel="stylesheet" href="gaiyas.cover.css">
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+</head>
+
+<body>
+    <h1 class="title">蓋亞永續自動化農業經營</h1>
+    <div class="question-item">
+        <div class="questionBlock">
+            <p class="question">今天想為農地做點什麼?</p>
+        </div>
+        
+        <div class="selection">
+            <form action="">
+                <select name="task" id="task">
+                    
+                        
+                    <option value="MY-FARM">查看我的田地狀況</option>
+                    <option value="WEATHER">查看當前天候因素</option>
+                    <option value="MARKET-PRICE">查看當前作物市場價格</option>
+                    <option value="CONTACT-US">聯絡我們</option>
+                    <option value="ABOUT-US">關於我們</option>
+                    
+                </select>
+                <button type="button" onclick="goToPage()">開啟</button>
+                
+            </form>
+            
+        </div>
+    </div>
+    <script>
+        function goToPage() {
+            // 獲取選擇框的值
+            var selectedValue = document.getElementById("task").value;
+            // 基於選擇的值導航到相應的頁面
+            if (selectedValue === "MY-FARM") {
+                window.open("../My_farm/my-farm.htm", "_blank")
+            }
+            else if  (selectedValue === "WEATHER") {
+                window.open("weather.htm", "_blank");
+            }
+            else if  (selectedValue === "MARKET-PRICE") {
+                window.open("price.htm", "_blank");
+            }
+            else if   (selectedValue === "CONTACT-US") {
+                window.open("contact_us/contact_us.htm", "_blank");
+            }
+            else  { window.open("about_us/about_us.htm", "_blank");
+            }
+            
+        }
+    </script>
+</body>
+
+</html>

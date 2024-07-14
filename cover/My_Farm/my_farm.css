@@ -1,0 +1,202 @@
+/*引用字库*/
+@font-face { font-family:'electronicFont'; src: url("font/DS-DIGIT.TTF"); }
+* {
+    font-family: 'Noto Serif TC', serif;
+}
+
+body {
+    background: linear-gradient(to bottom, #e0f7fa, transparent); /* 柔和的蓝色背景渐变 */
+    margin: 0;
+    overflow-y: auto;
+    padding-top: 70px; /* 确保内容不会与固定的头部重叠 */
+    width: 100%;
+}
+
+.header {
+    background-color: #1a472a; /* 深绿色 */
+    z-index: 1;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header .menu-toggle {
+    display: none;
+    font-size: 30px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.header .nav-links {
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+}
+
+.header .nav-links button {
+    cursor: pointer;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: white;
+    background-color: #4CAF50; /* 绿色 */
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px;
+    transition: background-color 0.3s;
+}
+
+.header .nav-links button:hover {
+    background-color: #388e3c; /* 深绿色 */
+}
+
+.nav-active {
+    display: flex !important;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: #1a472a;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+/* hr {
+    width: 1px;
+    color: black;
+    background-color: black;
+    height: 60px;
+    border-radius: -40px;
+} */
+
+.otherIndex {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    font-size: 30px;
+    font-weight: 400;
+    top: 30px;
+    left: 20px;
+}
+
+.autoControl {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.watering,
+.pesticide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.waterImg{
+    width: 300px;
+    margin-bottom: 10px;
+}
+.pesticideImg {
+    width: 300px;
+    margin-bottom: 45px;
+}
+.pesticideButton{
+margin-left: 30px;
+}
+.waterButton,
+.pesticideButton {
+    width:180px;
+    height: 60px;
+    border-radius: 25px;
+    border: none;
+    background-color: rgba(174, 166, 166, 0.672);
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.waterButton:hover,
+.pesticideButton:hover {
+    background-color: gray;
+}
+
+.watering {
+    position: relative; /* 設定父元素為相對定位 */
+}
+
+.overlay-text {
+    position: absolute; /* 設定文本為絕對定位 */
+    top: 48%; /* 垂直居中 */
+    left: 48%; /* 水平居中 */
+    transform: translate(-50%, -50%); /* 移動文本至中央 */
+    color: rgb(9, 9, 9); /* 設定文本顏色 */
+    font-size: 35px; /* 設定文本大小 */
+    font-weight: 500;
+    text-shadow: 1px 1px 2px black; /* 添加文本陰影以增強可讀性 */
+    text-align: center; /* 文字置中 */
+    font-family: 'Righteous', cursive;
+
+
+
+
+
+
+
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+
+    .header .menu-toggle {
+        display: block;
+    }
+
+    .header .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .nav-active {
+        display: flex;
+    }
+
+    .header .nav-links button {
+        width: 100%;
+        text-align: left;
+        margin: 5px 0;
+    }
+    .logo_img {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo_img img {
+        margin: 5px 0;
+    }
+
+
+}

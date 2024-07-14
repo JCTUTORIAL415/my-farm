@@ -1,0 +1,402 @@
+<DOCKTYPE! html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>賣的最高 發大財</title>
+        <link rel="stylesheet" href="price.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@200;500;900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="header">
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <nav class="nav-links">
+                <button value="HOME" onclick="go_to_page(this.value)">首頁</button>
+                <button value="MY-FARM" onclick="go_to_page(this.value)">我的田地狀況</button>
+                <button value="WEATHER" onclick="go_to_page(this.value)">今日氣候狀況</button>
+                <button value="MARKET-PRICE" onclick="go_to_page(this.value)">當前市場價格</button>
+                <button value="ABOUT-US" onclick="go_to_page(this.value)">聯絡我們</button>
+            </nav>
+        </div>
+        <div class="location_select">
+            <p class="question">請選擇您要銷售的作物</p>
+            <div class="selection">
+             <form action="">
+                 <select name="task" id="task">
+                     
+                 </select>
+                 <button type="button" onclick="displayData()">確認</button>
+                 
+             </form>
+             
+         </div>
+         
+    </div>
+    <div id="cropData"></div>  
+        
+    </body>
+    <script>
+         function go_to_page(selectedValue) {
+            // 獲取選擇框的值
+            // 基於選擇的值導航到相應的頁面
+            if (selectedValue === "MY-FARM") {
+                window.open("../My_farm/my-farm.htm", "_blank")
+            }
+            else if  (selectedValue === "WEATHER") {
+                window.open("../weather.htm", "_blank");
+            }
+            else if  (selectedValue === "MARKET-PRICE") {
+                window.open("../price.htm", "_blank");
+            }
+            else if   (selectedValue === "HOME") {
+                window.open("../GAIYAS_WEB_COVER.htm", "_blank");
+            }
+            else  {
+                window.open("../contact_us/contact_us.htm", "_blank");
+            }
+        }
+        var navLinks = document.querySelector('.nav-links');
+    if (navLinks.classList.contains('nav-active')) {
+        toggleMenu();
+    }
+
+
+window.addEventListener('resize', function() {
+    // 檢查窗口尺寸是否大於 768px
+    if (window.innerWidth > 768) {
+        // 獲取導航鏈接元素
+        var navLinks = document.querySelector('.nav-links');
+        // 如果導航鏈接元素的類中包含 'nav-active'，則將其移除
+        if (navLinks.classList.contains('nav-active')) {
+            toggleMenu();
+        }
+    }
+});
+
+
+        function toggleMenu() {
+            var navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('nav-active');
+        }
+    </script>
+
+
+<script>
+    const crops = [
+        "FA1 黃秋葵",
+        "FB1 花椰菜 青梗",
+        "FC1 胡瓜 黑刺",
+        "FD0 花胡瓜 其他",
+        "FD1 花胡瓜",
+        "FE1 冬瓜 白皮",
+        "FF0 絲瓜 其他",
+        "FF1 絲瓜",
+        "FF2 絲瓜 角瓜",
+        "FF4 絲瓜 長絲瓜",
+        "FG0 苦瓜 其他",
+        "FG1 苦瓜 白大米",
+        "FG2 苦瓜 青大米",
+        "FG3 苦瓜 山苦瓜",
+        "FG4 苦瓜 翠綠",
+        "FH3 扁蒲 花蒲",
+        "FH4 扁蒲 梨子蒲",
+        "FI0 茄子 其他",
+        "FI1 茄子 胭脂茄",
+        "FI2 茄子 麻荸茄",
+        "FI3 茄子 日本種",
+        "FJ1 番茄 黑柿",
+        "FJ3 番茄 牛番茄",
+        "FK3 甜椒 新香",
+        "FK4 甜椒 彩色種",
+        "FK5 甜椒 青椒",
+        "FK6 甜椒 水果彩椒",
+        "FK9 甜椒 進口",
+        "FL2 豌豆 紅花",
+        "FL6 豌豆 甜豌豆",
+        "FL9 豌豆 進口",
+        "FM1 菜豆 白色",
+        "FM2 菜豆 青色",
+        "FM3 菜豆 紅色",
+        "FN1 敏豆 白豆",
+        "FN4 敏豆 翼豆",
+        "FN5 敏豆 醜豆",
+        "FQ1 毛豆 豆莢",
+        "FQ2 毛豆 豆仁",
+        "FR1 青花苔",
+        "FR9 青花苔 進口",
+        "FS1 越瓜 青色",
+        "FS2 越瓜 白色",
+        "FT0 南瓜 其他",
+        "FT1 南瓜 木瓜形",
+        "FT2 南瓜 圓形",
+        "FT3 南瓜 黃如意",
+        "FT5 南瓜 青如意",
+        "FT6 南瓜 東昇",
+        "FT7 南瓜 栗子",
+        "FU1 隼人瓜",
+        "FU2 隼人瓜 瓜苗",
+        "FU3 石蓮花",
+        "FV0 辣椒 其他",
+        "FV1 辣椒 紅小",
+        "FV2 辣椒 青小",
+        "FV4 辣椒 朝天椒",
+        "FV6 辣椒 糯米椒",
+        "FW1 金針花",
+        "FY0 玉米 其他",
+        "FY4 玉米 玉米筍",
+        "FY5 玉米 糯米黑",
+        "FY6 玉米 甜軟殼",
+        "FY8 玉米 白龍王",
+        "FY9 玉米 進口",
+        "FZ1 落花生 生",
+        "LA1 甘藍 初秋",
+        "LA2 甘藍 改良種",
+        "LA4 甘藍 紫色",
+        "LA7 甘藍 改良尖",
+        "LA9 甘藍 進口",
+        "LB1 小白菜 土白菜",
+        "LB2 小白菜 蚵仔白",
+        "LB3 小白菜 奶油白",
+        "LB8 小白菜 水耕",
+        "LC0 包心白 其他",
+        "LC1 包心白 包白",
+        "LC3 包心白 包頭蓮",
+        "LC9 包心白 進口",
+        "LD1 青江白菜 小梗",
+        "LE1 皇宮菜 小葉",
+        "LE2 皇宮菜 大葉",
+        "LF2 蕹菜 小葉",
+        "LF3 蕹菜 水蕹菜",
+        "LG2 芹菜 白梗",
+        "LG3 芹菜 西洋芹菜",
+        "LG9 芹菜 進口",
+        "LH1 菠菜 圓葉",
+        "LH2 菠菜 角葉",
+        "LI0 萵苣菜 其他",
+        "LI1 萵苣菜 廣東菜",
+        "LI2 萵苣菜 結球萵",
+        "LI3 萵苣菜 本島圓葉",
+        "LI4 萵苣菜 本島尖葉",
+        "LI5 萵苣菜 油麥菜",
+        "LI6 萵苣菜 蘿美",
+        "LI7 萵苣菜 紅捲綠捲",
+        "LI8 萵苣菜 水耕",
+        "LI9 萵苣菜 進口",
+        "LJ3 芥菜 大芥菜",
+        "LJ4 芥菜 小芥菜",
+        "LK2 芥藍菜 芥藍芽",
+        "LK3 芥藍菜",
+        "LL1 茼蒿",
+        "LM1 莧菜 紅莧菜",
+        "LM2 莧菜 白莧菜",
+        "LN1 油菜",
+        "LO1 甘藍 初秋",
+        "LP1 芫荽",
+        "LP2 九層塔",
+        "LQ1 紅鳳菜 紅鳳菜",
+        "LS1 茴香",
+        "LT2 海菜 海帶",
+        "LT3 海菜 水蓮",
+        "LV1 巴西利",
+        "LX1 蕨菜 過貓",
+        "LZ2 藤川七 川七葉",
+        "MA1 洋菇",
+        "MA2 洋菇 盒裝",
+        "MB1 草菇",
+        "MC1 濕木耳",
+        "MD1 濕香菇",
+        "ME1 金絲菇 金針菇",
+        "ME2 金絲菇 盒裝",
+        "MF1 蠔菇 鮑魚菇",
+        "MI1 秀珍菇",
+        "MJ1 杏鮑菇",
+        "MJ2 杏鮑菇 盒裝",
+        "MK1 鴻喜菇",
+        "MK2 鴻喜菇 盒裝",
+        "ML1 珊瑚菇",
+        "MN1 柳松菇",
+        "MX1 其他菇類",
+        "OA1 鹹菜 清心",
+        "OA2 鹹菜 帶葉",
+        "OB1 雪里紅",
+        "OD1 蘿蔔乾",
+        "OE2 醃瓜 漬 漬",
+        "OG1 熟筍 桂竹筍",
+        "OG2 熟筍 箭竹筍",
+        "OI4 筍茸",
+        "OL1 朴菜",
+        "OX1 其他",
+        "SA3 蘿蔔 矸仔",
+        "SA4 蘿蔔 櫻桃",
+        "SA7 蘿蔔 甜菜根",
+        "SA9 蘿蔔 進口",
+        "SB1 胡蘿蔔 未洗",
+        "SB2 胡蘿蔔 清洗",
+        "SC1 馬鈴薯 本產",
+        "SC9 馬鈴薯 進口",
+        "SD1 洋蔥 本產",
+        "SD9 洋蔥 進口",
+        "SE1 青蔥 日蔥",
+        "SE3 青蔥 大蔥",
+        "SE5 青蔥 紅蔥頭",
+        "SE6 青蔥 粉蔥",
+        "SF1 韭菜 白頭",
+        "SF2 韭菜 韭菜黃",
+        "SF3 韭菜 韭菜花",
+        "SF4 韭菜 青頭",
+        "SG2 大蒜 軟梗",
+        "SG5 大蒜 蒜頭",
+        "SG6 大蒜 蒜仁",
+        "SG7 大蒜 蒜瓣",
+        "SH1 竹筍 麻竹筍",
+        "SH2 竹筍 綠竹筍",
+        "SH5 竹筍 烏殼綠",
+        "SH7 竹筍 去殼",
+        "SJ2 芋 檳榔心芋",
+        "SK1 荸薺",
+        "SK2 荸薺 加工",
+        "SL1 豆薯",
+        "SM1 牛蒡",
+        "SN1 蓮藕",
+        "SN2 蓮藕 蓮子",
+        "SO0 甘薯 其他",
+        "SO1 甘薯 臺農57號",
+        "SO2 甘薯 芋仔甘薯",
+        "SO3 甘薯 臺農66號",
+        "SP1 薑 老薑",
+        "SP2 薑 嫩薑",
+        "SQ1 茭白筍 帶殼",
+        "SQ3 茭白筍 去殼",
+        "SU2 薯蕷 白薯蕷",
+        "SU3 薯蕷 樹薯",
+        "SU9 薯蕷 進口",
+        "SV1 蘆筍 白蘆筍",
+        "SV2 蘆筍 綠蘆筍",
+        "SV3 蘆筍 蘆筍花",
+        "SV9 蘆筍 進口",
+        "SX0 芽菜類 其他",
+        "SX1 芽菜類 綠豆芽",
+        "SX2 芽菜類 黃豆芽",
+        "SX3 芽菜類 豌豆芽",
+        "SX4 芽菜類 苜蓿芽",
+        "SZ8 香茅",
+        "FE0 冬瓜 其他",
+        "FH1 扁蒲 長形",
+        "FN3 敏豆 粉豆",
+        "FP1 萊豆 豆莢",
+        "FP2 萊豆 豆仁",
+        "FR2 青花苔 青花筍",
+        "FV3 辣椒 雞心",
+        "FV5 辣椒 青龍",
+        "FX2 虎豆 福豆",
+        "FZ2 落花生 熟",
+        "LA5 甘藍 甘藍心",
+        "LA6 甘藍 甘藍芽",
+        "LL2 茼蒿 山茼蒿",
+        "LN2 油菜 小松菜",
+        "LX2 蕨菜 山蘇",
+        "LY1 西洋菜",
+        "LY2 黑甜仔菜",
+        "LY4 人參葉",
+        "MC2 濕木耳 盒裝",
+        "SG9 大蒜 進口",
+        "LF1 蕹菜 大葉",
+        "LG1 芹菜 青梗",
+        "OE1 醃瓜 乾 乾",
+        "SE2 青蔥 北蔥",
+        "SG1 大蒜 硬梗",
+        "SJ1 芋 麵芋",
+        "FJ0 番茄 其他",
+        "FK0 甜椒 其他",
+        "LT1 海菜 龍鬚菜"
+    ];
+
+    const selectElement = document.getElementById('task');
+
+crops.forEach(crop => {
+    const option = document.createElement('option');
+    option.textContent = crop;
+    option.value = crop;
+    selectElement.appendChild(option);
+});
+</script>
+<script>
+let weatherdata3;
+
+function displayData() {
+    let selectedCrop = document.getElementById("task").value;
+    let cropData = weatherdata3[selectedCrop];
+    let max = 0
+    let maxid = ""
+
+    // 检查选定的作物是否有交易数据
+    if (!cropData) {
+        alert("今日无该作物的交易行情数据！");
+        return;
+    }
+
+    // 将交易数据按照平均价格降序排序
+    let sortedLocations = Object.keys(cropData).sort((a, b) => {
+        return cropData[b]["平均價(元/公斤)"] - cropData[a]["平均價(元/公斤)"];
+    });
+
+    let htmlContent = "";
+    // 遍历排序后的位置，以确保平均价格最高的数据显示在最上方
+    sortedLocations.forEach(location => {
+        if (parseFloat(cropData[location]["平均價(元/公斤)"]) > max) {
+     max = cropData[location]["平均價(元/公斤)"]
+     maxid = location
+    }
+    });
+    htmlContent = `
+        <div class="location">
+            <div>${maxid}</div>
+            <div class="priceIndex">
+                <span>上價: ${cropData[maxid]["上價"]}</span>
+                <span>中價: ${cropData[maxid]["中價"]}</span>
+                <span>下價: ${cropData[maxid]["下價"]}</span>
+                <span>平均價(元/公斤): ${cropData[maxid]["平均價(元/公斤)"]}</span>
+                <span>跟前一交易日比較%: ${cropData[maxid]["跟前一交易日比較%"]}</span>
+                <span>交易量(公斤): ${cropData[maxid]["交易量(公斤)"]}</span>
+                <img src="crown.png" class="crown">
+            </div>
+           
+        </div>
+    `;
+    sortedLocations.forEach(location => {
+        if (location != maxid) {
+            htmlContent += `
+                <div class="location">
+                    <div>${location}</div>
+                    <div class="priceIndex">
+                        <span>上價: ${cropData[location]["上價"]}</span>
+                        <span>中價: ${cropData[location]["中價"]}</span>
+                        <span>下價: ${cropData[location]["下價"]}</span>
+                        <span>平均價(元/公斤): ${cropData[location]["平均價(元/公斤)"]}</span>
+                        <span>跟前一交易日比較%: ${cropData[location]["跟前一交易日比較%"]}</span>
+                        <span>交易量(公斤): ${cropData[location]["交易量(公斤)"]}</span>
+                    </div>
+                </div>
+            `;
+        }
+    });
+
+    document.getElementById("cropData").innerHTML = htmlContent;
+}
+fetch("officialveg.json")
+    .then(response => response.json())
+    .then(data => {
+        weatherdata3 = data;
+        // Populate the select dropdown with crop options
+        let selectDropdown = document.getElementById("task");
+        for (let crop in weatherdata3) {
+            let option = document.createElement("option");
+            option.value = crop;
+            option.text = crop;
+            selectDropdown.appendChild(option);
+        }
+    })
+    .catch(error => console.error('Error fetching data:', error));
+</script>
+</html>
